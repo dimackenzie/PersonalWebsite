@@ -2,25 +2,42 @@ import React from 'react'
 import styled from 'styled-components'
 import colors from '../utilities/colors'
 import IntoView from '../utilities/IntoView'
+import { device } from '../utilities/breakpoints'
 
 const Wrapper = styled.div`
   margin: 10rem auto;
+  padding: 1rem;
   max-width: 960px;
+
+  @media ${device.tablet} {
+    margin: 5rem auto;
+  }
 `
 const ServicesWrapper = styled.div`
   display: flex;
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
 `
 const Service = styled.div`
   padding: 2rem;
   text-align: center;
   position: relative;
+  box-sizing: border-box;
+
+  @media ${device.tablet} {
+    width: 100%;
+  }
 
   &:first-of-type {
     background-color: ${colors.mediumGrey};
     margin-right: 3rem;
     box-shadow: -1px 0px 3px -4px rgba(0, 0, 0, 0.5);
-  }
 
+    @media ${device.tablet} {
+      margin-right: auto;
+    }
+  }
   &:first-of-type::after {
     content: ' ';
     position: absolute;
@@ -34,6 +51,11 @@ const Service = styled.div`
     transform-origin: bottom left;
     transform: skew(-10deg, 0deg);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  @media ${device.tablet} {
+    &:first-of-type::after {
+      display: none;
+    }
   }
 `
 

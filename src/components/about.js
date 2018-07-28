@@ -3,14 +3,28 @@ import styled from 'styled-components'
 import colors from '../utilities/colors'
 import portrait from '../assets/images/Placeholder.gif'
 import IntoView from '../utilities/IntoView'
+import { device } from '../utilities/breakpoints'
 
 const Wrapper = styled.div`
   margin: 20rem auto 10rem;
   max-width: 960px;
+  padding: 1rem;
+
+  @media ${device.tablet} {
+    margin: 10rem auto 5rem;
+  }
+
+  @media ${device.mobileM} {
+    margin: 5rem auto;
+  }
 `
 
 const AboutWrapper = styled.div`
   display: flex;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
 `
 
 const AboutHeader = styled.h2`
@@ -35,10 +49,19 @@ const BioCard = styled.div`
   padding: 1rem 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   align-self: center;
+
+  @media ${device.mobileM} {
+    margin: 2rem 0;
+  }
 `
 
 const Portrait = styled.img`
   display: inline-block;
+
+  @media ${device.tablet} {
+    max-width: 350px;
+    margin: 0 auto;
+  }
 `
 
 const NameHeader = styled.h3`

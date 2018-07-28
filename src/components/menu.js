@@ -1,40 +1,118 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import colors from '../utilities/colors'
 import { device } from '../utilities/breakpoints'
 
-const Menu = () => {
-  const toggleMenu = () => {
-    return
+export default class Menu extends Component {
+  state = {
+    open: false,
   }
 
-  return (
-    <Fragment>
-      <MenuIcon onClick={toggleMenu} />
-      <Nav>
-        <NavLink>Services</NavLink>
-        <NavLink>About</NavLink>
-        <NavLink>Contact</NavLink>
-      </Nav>
-    </Fragment>
-  )
+  toggleMenu = () => {
+    this.setState({
+      open: !this.state.open,
+    })
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <MenuButton
+          onClick={this.toggleMenu}
+          className={this.state.open ? 'open' : ''}
+        >
+          <MenuBurger className={this.state.open ? 'open' : ''} />
+        </MenuButton>
+        <Nav className={this.state.open ? 'open' : ''}>
+          <NavLink>Services</NavLink>
+          <NavLink>About</NavLink>
+          <NavLink>Contact</NavLink>
+        </Nav>
+      </Fragment>
+    )
+  }
 }
 
-const MenuIcon = styled(Link)`
+const MenuButton = styled.a`
   display: none;
 
   @media ${device.tablet} {
     display: inline-block;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
-    position: relative;
+    align-self: flex-start;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    padding: 7px;
+    margin-left: auto;
+    transition: all 0.3s ease;
+    transform: translate3d(100px, 0, 0);
+    &.open {
+      background-color: ${colors.white}
+      transform: translate3d(0, 0, 0);
+    }
+  }
+`
+
+const MenuBurger = styled.span`
+  display: block;
+  width: 30px;
+  height: 4px;
+  margin: 8px auto;
+  background-color: ${colors.white};
+  transition: all 0.3s ease;
+
+  &.open {
+    background-color: transparent;
+  }
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: ${colors.white};
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+  &::before {
+    margin: 5px 0;
+    top: 0px;
+  }
+  &::after {
+    margin: 10px 0;
+    top: 15px;
+  }
+  &.open::before {
+    background-color: ${colors.mediumGrey};
+    top: 20px;
+    margin: 0;
+    transform: rotate(45deg);
+  }
+  &.open::after {
+    background-color: ${colors.mediumGrey};
+    top: 20px;
+    margin: 0;
+    transform: rotate(-45deg);
   }
 `
 
 const Nav = styled.nav`
   display: flex;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+    transition: all 0.3s ease;
+    &.open {
+      background-color: ${colors.white};
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
 `
 
 const NavLink = styled(Link)`
@@ -52,7 +130,10 @@ const NavLink = styled(Link)`
     ${colors.teal} 50%,
     transparent 50%
   );
-
+  }
+  @media ${device.tablet} {
+    color: ${colors.mediumGrey};
+  }
   &:after {
     content: '';
     height: 100%;
@@ -68,5 +149,3 @@ const NavLink = styled(Link)`
     );
   }
 `
-
-export default Menu

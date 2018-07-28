@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import Typist from 'react-typist'
+import 'babel-polyfill'
+import '../../node_modules/react-typist/dist/Typist.css'
 import Menu from './menu'
 import colors from '../utilities/colors'
 import logo from '../assets/images/logo.svg'
@@ -15,6 +18,7 @@ const HeaderWrapper = styled.div`
 `
 
 const NavBar = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,7 +65,9 @@ const Header = () => (
       <Menu />
     </NavBar>
     <Punchline>
-      Hello, I'm Ian. I make <span>BEAUTIFUL, BLAZING-FAST</span> websites.
+      <Typist>
+        Hello, I'm Ian. I make <span>BEAUTIFUL, BLAZING-FAST</span> websites.
+      </Typist>
     </Punchline>
   </HeaderWrapper>
 )
