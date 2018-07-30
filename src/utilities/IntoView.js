@@ -13,6 +13,10 @@ export default class IntoView extends Component {
 
   render() {
     const { children, direction } = this.props
-    return <div data-aos={direction}>{children}</div>
+    return (
+      <div data-aos={direction} data-aos-once="true">
+        {children}
+      </div>
+    )
   }
 }

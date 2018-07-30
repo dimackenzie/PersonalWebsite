@@ -3,24 +3,76 @@ import styled from 'styled-components'
 import colors from '../utilities/colors'
 import IntoView from '../utilities/IntoView'
 import { device } from '../utilities/breakpoints'
+import PencilRuler from '../assets/images/pencilRuler.svg'
+import Code from '../assets/images/code.svg'
+
+const Services = () => (
+  <Wrapper id="services">
+    <InteriorWrapper>
+      <IntoView direction="zoom-in">
+        <ServicesHeader>Services</ServicesHeader>
+        <ServicesDescription>
+          I design and build full-stack web sites and web apps. Have a project
+          or idea you'd like to discuss?{' '}
+          <LetsTalk href="#contact" title="contact">
+            Let's talk.
+          </LetsTalk>
+        </ServicesDescription>
+        <ServicesWrapper>
+          <DesignService>
+            <RulerIcon src={PencilRuler} />
+            <ServiceHeader>Design</ServiceHeader>
+            <ServiceDescription>
+              From planning and building a sites layout and structure, to
+              implementing interactivity and funtionality, I design the visual
+              layer.
+            </ServiceDescription>
+          </DesignService>
+          <DevelopService>
+            <CodeIcon src={Code} />
+            <ServiceHeader>Develop</ServiceHeader>
+            <ServiceDescription>
+              Here's were I bring those ideas and designs to life. Utilizing
+              HTML, CSS, and Javascript, I build fast, interactive websites.
+            </ServiceDescription>
+          </DevelopService>
+        </ServicesWrapper>
+      </IntoView>
+    </InteriorWrapper>
+  </Wrapper>
+)
+
+export default Services
 
 const Wrapper = styled.div`
-  margin: 10rem auto;
-  padding: 1rem;
-  max-width: 960px;
+  margin: 0 auto;
+  padding: 15rem 1rem;
+  background-color: ${colors.white};
 
   @media ${device.tablet} {
-    margin: 5rem auto;
+    padding: 5rem 1rem;
   }
 `
+
+const InteriorWrapper = styled.section`
+  max-width: 1000px;
+  margin: 0 auto;
+`
+
 const ServicesWrapper = styled.div`
   display: flex;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  background-color: ${colors.dodgerBlue};
+  border-radius: 3px;
+
   @media ${device.tablet} {
     flex-direction: column;
   }
 `
 const Service = styled.div`
-  padding: 2rem;
+  padding: 5rem 4rem;
   text-align: center;
   position: relative;
   box-sizing: border-box;
@@ -28,91 +80,73 @@ const Service = styled.div`
   @media ${device.tablet} {
     width: 100%;
   }
+`
 
-  &:first-of-type {
-    background-color: ${colors.mediumGrey};
-    margin-right: 3rem;
-    box-shadow: -1px 0px 3px -4px rgba(0, 0, 0, 0.5);
+const RulerIcon = styled.img`
+  color: ${colors.white};
+  height: 60px;
+`
+const CodeIcon = styled.img`
+  color: ${colors.white};
+  height: 60px;
+`
+const DesignService = Service.extend`
+  color: ${colors.white};
 
-    @media ${device.tablet} {
-      margin-right: auto;
-    }
+  h3 {
+    margin-top: 1rem;
   }
-  &:first-of-type::after {
-    content: ' ';
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background: #212121;
-    transform-origin: bottom left;
-    transform: skew(-10deg, 0deg);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  @media ${device.tablet} {
-    &:first-of-type::after {
-      display: none;
-    }
+`
+const DevelopService = Service.extend`
+  color: ${colors.white};
+
+  h3 {
+    margin-top: 1rem;
   }
 `
 
 const ServicesHeader = styled.h2`
-  margin-bottom: 3rem;
-  color: ${colors.white};
+  margin-bottom: 1.5rem;
+  color: ${colors.martinique};
   position: relative;
   text-transform: uppercase;
-  font-size: 40px;
+  text-align: center;
+  font-size: 50px;
 
   &:before {
     content: '';
-    width: 5%;
-    background-color: ${colors.teal};
+    width: 3rem;
+    background-color: ${colors.dodgerBlue};
     height: 6px;
     top: -8px;
+    border-radius: 1px;
     position: absolute;
   }
 `
+const ServicesDescription = styled.p`
+  color: ${colors.dolphin};
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+`
 
 const ServiceHeader = styled.h3`
+  font-size: 28px;
   color: ${colors.white};
   text-transform: uppercase;
 `
 
+// const ServiceSubHeader = styled.h4`
+//   font-size: 22px;
+// `
+
+// const ServiceList = styled.ul``
+
 const ServiceDescription = styled.p`
   color: ${colors.white};
+  font-weight: 300;
 `
 
-const Services = () => (
-  <Wrapper>
-    <IntoView direction="zoom-in">
-      <ServicesHeader>Services</ServicesHeader>
-      <ServicesWrapper>
-        <Service>
-          <ServiceHeader>Design</ServiceHeader>
-          <ServiceDescription>
-            This is a little bit about me. Fingerstache paleo iceland everyday
-            carry pop-up dreamcatcher gentrify literally vaporware helvetica
-            migas aesthetic gochujang activated charcoal. Direct trade taxidermy
-            skateboard seitan chambray pork belly offl cliche actually taiyaki
-            photo booth.
-          </ServiceDescription>
-        </Service>
-        <Service>
-          <ServiceHeader>Development</ServiceHeader>
-          <ServiceDescription>
-            This is a little bit about me. Fingerstache paleo iceland everyday
-            carry pop-up dreamcatcher gentrify literally vaporware helvetica
-            migas aesthetic gochujang activated charcoal. Direct trade taxidermy
-            skateboard seitan chambray pork belly offl cliche actually taiyaki
-            photo booth.
-          </ServiceDescription>
-        </Service>
-      </ServicesWrapper>
-    </IntoView>
-  </Wrapper>
-)
-
-export default Services
+const LetsTalk = styled.a`
+  color: ${colors.dodgerBlue};
+`

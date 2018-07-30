@@ -4,42 +4,92 @@ import colors from '../utilities/colors'
 import IntoView from '../utilities/IntoView'
 import { device } from '../utilities/breakpoints'
 
+const Contact = () => (
+  <Wrapper id="contact">
+    <InteriorWrapper>
+      <IntoView direction="fade-left">
+        <ContactHeader>Contact</ContactHeader>
+        <ContactDescription>
+          Interested in working together? Let's chat. Leave me a message below.
+        </ContactDescription>
+        <ContactCard>
+          <form
+            name="contact"
+            action="POST"
+            netlify
+            netlify-honeypot="bot-field"
+          >
+            <FormGroupHalf>
+              <Label htmlFor="name">Name</Label>
+              <Input type="text" name="Name" />
+            </FormGroupHalf>
+            <FormGroupHalf>
+              <Label htmlFor="email">Email</Label>
+              <Input type="email" name="email" />
+            </FormGroupHalf>
+            <FormGroupFull>
+              <Label htmlFor="message">Message</Label>
+              <Textarea name="message" />
+            </FormGroupFull>
+            <ButtonGroup>
+              <ContactButton>Send Message</ContactButton>
+            </ButtonGroup>
+          </form>
+        </ContactCard>
+      </IntoView>
+    </InteriorWrapper>
+  </Wrapper>
+)
+
+export default Contact
+
 const Wrapper = styled.div`
-  margin: 20rem auto 10rem;
-  max-width: 960px;
-  padding: 1rem;
+  padding: 10rem 1rem;
+  margin: 0 auto;
+  background-color: ${colors.white};
 
   @media ${device.tablet} {
-    margin: 10rem auto 5rem;
+    padding: 5rem 1rem;
   }
+`
 
-  @media ${device.mobileM} {
-    margin: 5rem auto;
-  }
+const InteriorWrapper = styled.div`
+  max-width: 1000px;
+  margin: 0 auto;
 `
 
 const ContactHeader = styled.h2`
-  margin-bottom: 3rem;
-  color: ${colors.white};
+  margin-bottom: 1.5rem;
+  color: ${colors.martinique};
   position: relative;
   text-transform: uppercase;
-  font-size: 40px;
+  text-align: center;
+  font-size: 50px;
 
   &:before {
     content: '';
-    width: 5%;
-    background-color: ${colors.teal};
+    width: 3rem;
+    background-color: ${colors.dodgerBlue};
     height: 6px;
     top: -8px;
+    border-radius: 1px;
     position: absolute;
   }
 `
+const ContactDescription = styled.p`
+  color: ${colors.dolphin};
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+`
+
 const ContactCard = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: #212121;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: ${colors.catskillWhite};
+  border-radius: 3px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
   padding: 0 2rem;
 
   @media ${device.mobileM} {
@@ -47,7 +97,7 @@ const ContactCard = styled.div`
   }
 
   p {
-    color: ${colors.white};
+    color: ${colors.dolphin};
     display: block;
     padding-top: 1rem;
     padding-left: 2rem;
@@ -82,27 +132,38 @@ const FormGroupFull = styled.div`
 `
 
 const Label = styled.label`
-  color: ${colors.white};
+  color: ${colors.gunPowder};
   display: block;
   margin-bottom: 0.3rem;
 `
 
 const Input = styled.input`
-  background-color: ${colors.lightGrey};
+  color: ${colors.dolphin};
   border: none;
   padding: 1rem;
   font-size: 20px;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 3px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+
+  &:active:before,
+  &:focus:before {
+    content: '';
+    background-color: ${colors.dodgerBlue};
+    width: 5px:
+    height: 100%:
+    position: absolute;
+  }
 `
 const Textarea = styled.textarea`
-  background-color: ${colors.lightGrey};
+  color: ${colors.dolphin};
   border: none;
   padding: 1rem;
   font-size: 20px;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 3px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
 `
 
@@ -113,56 +174,24 @@ const ButtonGroup = styled.div`
 
 const ContactButton = styled.button`
   color: ${colors.white};
-  background-color: ${colors.lightGrey};
+  background-color: ${colors.dodgerBlue};
   border: none;
   padding: 1rem;
   text-transform: uppercase;
   font-size: 16px;
+  border-radius: 3px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   transition: 0.3s all;
 
   &:hover {
-    background-color: ${colors.teal};
+    background-color: ${colors.dodgerBlue};
     box-shadow: none;
     border-bottom: none;
   }
 
   &:active {
-    background-color: ${colors.teal};
+    background-color: ${colors.dodgerBlue};
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
     border-bottom: none;
   }
 `
-
-const Contact = () => (
-  <Wrapper>
-    <IntoView direction="fade-left">
-      <ContactHeader>Contact</ContactHeader>
-      <ContactCard>
-        <p>
-          Leave me a message, let's work together to make a product both you,
-          and I are proud of.
-        </p>
-        <form action="POST">
-          <FormGroupHalf>
-            <Label htmlFor="name">Name</Label>
-            <Input type="text" name="Name" />
-          </FormGroupHalf>
-          <FormGroupHalf>
-            <Label htmlFor="email">Email</Label>
-            <Input type="email" name="email" />
-          </FormGroupHalf>
-          <FormGroupFull>
-            <Label htmlFor="message">Message</Label>
-            <Textarea name="message" />
-          </FormGroupFull>
-          <ButtonGroup>
-            <ContactButton>Send Message</ContactButton>
-          </ButtonGroup>
-        </form>
-      </ContactCard>
-    </IntoView>
-  </Wrapper>
-)
-
-export default Contact

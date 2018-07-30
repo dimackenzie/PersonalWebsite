@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react'
-import { Link } from 'gatsby'
 import styled from 'styled-components'
 import colors from '../utilities/colors'
 import { device } from '../utilities/breakpoints'
@@ -25,9 +24,9 @@ export default class Menu extends Component {
           <MenuBurger className={this.state.open ? 'open' : ''} />
         </MenuButton>
         <Nav className={this.state.open ? 'open' : ''}>
-          <NavLink>Services</NavLink>
-          <NavLink>About</NavLink>
-          <NavLink>Contact</NavLink>
+          <NavLink href="#services">Services</NavLink>
+          <NavLink href="#about">About</NavLink>
+          <NavLink href="#contact">Contact</NavLink>
         </Nav>
       </Fragment>
     )
@@ -40,7 +39,7 @@ const MenuButton = styled.a`
   @media ${device.tablet} {
     display: inline-block;
     cursor: pointer;
-    align-self: flex-start;
+    align-self: center;
     width: 30px;
     height: 30px;
     background: none;
@@ -50,7 +49,7 @@ const MenuButton = styled.a`
     transition: all 0.3s ease;
     transform: translate3d(100px, 0, 0);
     &.open {
-      background-color: ${colors.white}
+      background-color: ${colors.gunPowder}
       transform: translate3d(0, 0, 0);
     }
   }
@@ -61,7 +60,8 @@ const MenuBurger = styled.span`
   width: 30px;
   height: 4px;
   margin: 8px auto;
-  background-color: ${colors.white};
+  background-color: ${colors.gunPowder};
+  border-radius: 1px;
   transition: all 0.3s ease;
 
   &.open {
@@ -73,7 +73,8 @@ const MenuBurger = styled.span`
     display: block;
     width: 30px;
     height: 4px;
-    background-color: ${colors.white};
+    border-radius: 1px;
+    background-color: ${colors.gunPowder};
     position: absolute;
     transition: all 0.3s ease;
   }
@@ -86,13 +87,13 @@ const MenuBurger = styled.span`
     top: 15px;
   }
   &.open::before {
-    background-color: ${colors.mediumGrey};
+    background-color: ${colors.white};
     top: 20px;
     margin: 0;
     transform: rotate(45deg);
   }
   &.open::after {
-    background-color: ${colors.mediumGrey};
+    background-color: ${colors.white};
     top: 20px;
     margin: 0;
     transform: rotate(-45deg);
@@ -108,15 +109,15 @@ const Nav = styled.nav`
     transform: translate3d(100px, 0, 0);
     transition: all 0.3s ease;
     &.open {
-      background-color: ${colors.white};
+      background-color: ${colors.gunPowder};
       opacity: 1;
       transform: translate3d(0, 0, 0);
     }
   }
 `
 
-const NavLink = styled(Link)`
-  color: ${colors.white};
+const NavLink = styled.a`
+  color: ${colors.gunPowder};
   text-decoration: none;
   text-transform: uppercase;
   font-size: 22px;
@@ -124,15 +125,16 @@ const NavLink = styled(Link)`
   padding: 0.5rem;
   margin: 0 0.3rem;
   transition: all 0.3s;
+  border-radius: 3px;
   background-size: 100% 200%;
   background-image: linear-gradient(
     to top,
-    ${colors.teal} 50%,
+    ${colors.dodgerBlue} 50%,
     transparent 50%
   );
-  }
   @media ${device.tablet} {
-    color: ${colors.mediumGrey};
+    color: ${colors.white};
+    background-image: none;
   }
   &:after {
     content: '';
@@ -142,10 +144,15 @@ const NavLink = styled(Link)`
   }
   &:hover {
     background-position: 0 100%;
+    color: ${colors.white};
     background-image: linear-gradient(
       to top,
-      ${colors.teal} 50%,
+      ${colors.dodgerBlue} 50%,
       transparent 50%
     );
+
+    @media ${device.tablet} {
+      background-image: none;
+    }
   }
 `

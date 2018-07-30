@@ -1,13 +1,19 @@
-export const white = '#f6f6f6'
-export const darkGrey = '#171717'
-export const mediumGrey = '#212121'
-export const lightGrey = '#373737'
-export const teal = '#00d29c'
+// Names generated from: http://chir.ag/projects/name-that-color
+
+export const dodgerBlue = '#1982FC'
+export const white = '#FFFFFF'
+export const catskillWhite = '#EEF2F7'
+export const martinique = '#2F2F4F'
+export const gunPowder = '#474759'
+export const dolphin = '#676782'
+export const woodsmoke = '#0E0E12'
 
 export default {
+  dodgerBlue,
   white,
-  darkGrey,
-  mediumGrey,
-  lightGrey,
-  teal,
+  catskillWhite,
+  martinique,
+  gunPowder,
+  dolphin,
+  woodsmoke,
 }
