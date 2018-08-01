@@ -18,7 +18,7 @@ class Contact extends React.Component {
   }
 
   handleSubmit = e => {
-    fetch('/', {
+    fetch('https://www.ianmackenzie.io/', {
       method: 'POST',
       header: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...this.state }),
