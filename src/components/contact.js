@@ -18,7 +18,7 @@ class Contact extends React.Component {
   }
 
   handleSubmit = e => {
-    fetch('https://www.ianmackenzie.io/', {
+    fetch('/', {
       method: 'POST',
       header: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact', ...this.state }),
@@ -44,13 +44,17 @@ class Contact extends React.Component {
             </ContactDescription>
             <ContactCard>
               <form
-                onSubmit={this.handleSubmit}
                 name="contact"
                 action="post"
-                data-netlify
+                data-netlify="true"
                 data-netlify-honeypot="bot-field"
+                onSubmit={this.handleSubmit}
               >
                 <input type="hidden" name="form-name" value="contact" />
+                <label hidden>
+                  Don’t fill this out:{' '}
+                  <input name="bot-field" onChange={this.handleChange} />
+                </label>
                 <FormGroupHalf>
                   <Label htmlFor="name">Name</Label>
                   <Input
