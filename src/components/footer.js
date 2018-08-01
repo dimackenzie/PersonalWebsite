@@ -53,7 +53,7 @@ const InteriorWrapper = styled.div`
   margin: 0 auto;
 
   @media ${device.tablet} {
-    flex-direction: row;
+    flex-direction: column;
   }
 `
 const Section = styled.div`

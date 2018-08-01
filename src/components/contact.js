@@ -25,11 +25,11 @@ const Contact = () => (
             </label>
             <FormGroupHalf>
               <Label htmlFor="name">Name</Label>
-              <Input type="text" name="name" />
+              <Input type="text" name="name" required />
             </FormGroupHalf>
             <FormGroupHalf>
               <Label htmlFor="email">Email</Label>
-              <Input type="email" name="email" />
+              <Input type="email" name="email" required />
             </FormGroupHalf>
             <FormGroupFull>
               <Label htmlFor="message">Message</Label>
@@ -96,6 +96,10 @@ const ContactCard = styled.div`
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
   padding: 2rem;
 
+  @media ${device.tablet} {
+    padding: 2rem 0.5rem;
+  }
+
   p {
     color: ${colors.dolphin};
     display: block;
@@ -132,13 +136,13 @@ const FormGroupFull = styled.div`
 `
 
 const Label = styled.label`
-  color: ${colors.gunPowder};
+  color: ${colors.dolphin};
   display: block;
   margin-bottom: 0.3rem;
 `
 
 const Input = styled.input`
-  color: ${colors.dolphin};
+  color: ${colors.gunPowder};
   border: none;
   padding: 1rem;
   font-size: 20px;

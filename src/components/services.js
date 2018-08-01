@@ -72,13 +72,16 @@ const ServicesWrapper = styled.div`
   }
 `
 const Service = styled.div`
-  padding: 5rem 4rem;
+  padding: 3rem 4rem;
+  margin: 2rem 0;
+  width: 50%;
   text-align: center;
   position: relative;
   box-sizing: border-box;
 
   @media ${device.tablet} {
     width: 100%;
+    padding: 3rem 2rem;
   }
 `
 
@@ -92,16 +95,20 @@ const CodeIcon = styled.img`
 `
 const DesignService = Service.extend`
   color: ${colors.white};
+  border-right: 1px solid rgba(255, 255, 255, 0.6);
 
+  @media ${device.tablet} {
+    border: none;
+  }
   h3 {
-    margin-top: 1rem;
+    margin-top: 0.4rem;
   }
 `
 const DevelopService = Service.extend`
   color: ${colors.white};
 
   h3 {
-    margin-top: 1rem;
+    margin-top: 0.4rem;
   }
 `
 

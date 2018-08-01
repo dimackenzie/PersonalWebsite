@@ -47,9 +47,10 @@ const MenuButton = styled.a`
     padding: 7px;
     margin-left: auto;
     transition: all 0.3s ease;
-    transform: translate3d(100px, 0, 0);
+    transform: translate3d(0, 0, 0);
     &.open {
       background-color: ${colors.gunPowder}
+      border-radius: 4px;
       transform: translate3d(0, 0, 0);
     }
   }
@@ -102,14 +103,22 @@ const MenuBurger = styled.span`
 
 const Nav = styled.nav`
   display: flex;
+  z-index: 100;
 
   @media ${device.tablet} {
+    position: absolute;
+    top: 115px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
     flex-direction: column;
     opacity: 0;
-    transform: translate3d(100px, 0, 0);
+    transform: translate3d(0, -35px, 0);
     transition: all 0.3s ease;
     &.open {
       background-color: ${colors.gunPowder};
+      border-radius: 4px;
       opacity: 1;
       transform: translate3d(0, 0, 0);
     }
@@ -122,7 +131,7 @@ const NavLink = styled.a`
   text-transform: uppercase;
   font-size: 22px;
   font-weight: 600;
-  padding: 0.5rem;
+  padding: 1rem;
   margin: 0 0.3rem;
   transition: all 0.3s;
   border-radius: 3px;

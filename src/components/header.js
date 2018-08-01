@@ -7,6 +7,7 @@ import '../../node_modules/react-typist/dist/Typist.css'
 import Particles from 'react-particles-js'
 import Menu from './menu'
 import colors from '../utilities/colors'
+import { device } from '../utilities/breakpoints'
 import logo from '../assets/images/logo.svg'
 import arrow from '../assets/images/arrow.svg'
 
@@ -112,6 +113,11 @@ const Punchline = styled.h2`
   text-align: center;
   left: 0;
   right: 0;
+
+  @media ${device.tablet} {
+    padding: 1rem;
+    font-size: 40px;
+  }
 
   span {
     font-weight: 300;

@@ -88,6 +88,7 @@ const Portrait = styled.img`
 
   @media ${device.tablet} {
     max-width: 350px;
+    width: 100%;
     margin: 0 auto;
   }
 `
