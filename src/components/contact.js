@@ -43,7 +43,13 @@ class Contact extends React.Component {
               below.
             </ContactDescription>
             <ContactCard>
-              <form onSubmit={this.handleSubmit} name="contact">
+              <form
+                onSubmit={this.handleSubmit}
+                name="contact"
+                action="post"
+                data-netlify
+                data-netlify-honeypot="bot-field"
+              >
                 <FormGroupHalf>
                   <Label htmlFor="name">Name</Label>
                   <Input
