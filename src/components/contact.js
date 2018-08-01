@@ -50,6 +50,7 @@ class Contact extends React.Component {
                 data-netlify
                 data-netlify-honeypot="bot-field"
               >
+                <input type="hidden" name="form-name" value="contact" />
                 <FormGroupHalf>
                   <Label htmlFor="name">Name</Label>
                   <Input
