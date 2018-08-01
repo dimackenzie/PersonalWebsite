@@ -4,94 +4,45 @@ import colors from '../utilities/colors'
 import IntoView from '../utilities/IntoView'
 import { device } from '../utilities/breakpoints'
 
-const encode = data => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
-}
-
-class Contact extends React.Component {
-  state = {
-    name: '',
-    email: '',
-    message: '',
-  }
-
-  handleSubmit = e => {
-    fetch('/', {
-      method: 'POST',
-      header: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...this.state }),
-    })
-      .then(() => alert('Success'))
-      .catch(error => alert(error))
-
-    e.preventDefault()
-  }
-
-  handleChange = e => this.setState({ [e.target.name]: e.target.value })
-
-  render() {
-    const { name, email, message } = this.state
-    return (
-      <Wrapper id="contact">
-        <InteriorWrapper>
-          <IntoView direction="fade-left">
-            <ContactHeader>Contact</ContactHeader>
-            <ContactDescription>
-              Interested in working together? Let's chat. Leave me a message
-              below.
-            </ContactDescription>
-            <ContactCard>
-              <form
-                name="contact"
-                action="post"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                onSubmit={this.handleSubmit}
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                <label hidden>
-                  Don’t fill this out:{' '}
-                  <input name="bot-field" onChange={this.handleChange} />
-                </label>
-                <FormGroupHalf>
-                  <Label htmlFor="name">Name</Label>
-                  <Input
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={this.handleChange}
-                  />
-                </FormGroupHalf>
-                <FormGroupHalf>
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={this.handleChange}
-                  />
-                </FormGroupHalf>
-                <FormGroupFull>
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    name="message"
-                    value={message}
-                    onChange={this.handleChange}
-                  />
-                </FormGroupFull>
-                <ButtonGroup>
-                  <ContactButton type="submit">Send Message</ContactButton>
-                </ButtonGroup>
-              </form>
-            </ContactCard>
-          </IntoView>
-        </InteriorWrapper>
-      </Wrapper>
-    )
-  }
-}
+const Contact = () => (
+  <Wrapper id="contact">
+    <InteriorWrapper>
+      <IntoView direction="fade-left">
+        <ContactHeader>Contact</ContactHeader>
+        <ContactDescription>
+          Interested in working together? Let's chat. Leave me a message below.
+        </ContactDescription>
+        <ContactCard>
+          <form
+            name="contact"
+            method="post"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <label hidden>
+              Don’t fill this out: <input name="bot-field" />
+            </label>
+            <FormGroupHalf>
+              <Label htmlFor="name">Name</Label>
+              <Input type="text" name="name" />
+            </FormGroupHalf>
+            <FormGroupHalf>
+              <Label htmlFor="email">Email</Label>
+              <Input type="email" name="email" />
+            </FormGroupHalf>
+            <FormGroupFull>
+              <Label htmlFor="message">Message</Label>
+              <Textarea name="message" />
+            </FormGroupFull>
+            <ButtonGroup>
+              <ContactButton type="submit">Send Message</ContactButton>
+            </ButtonGroup>
+          </form>
+        </ContactCard>
+      </IntoView>
+    </InteriorWrapper>
+  </Wrapper>
+)
 
 export default Contact
 
