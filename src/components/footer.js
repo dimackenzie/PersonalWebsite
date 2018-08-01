@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import colors from '../utilities/colors'
+import { device } from '../utilities/breakpoints'
 
 const Footer = () => (
   <Wrapper>
@@ -50,10 +51,18 @@ const InteriorWrapper = styled.div`
   align-items: center;
   padding: 2rem;
   margin: 0 auto;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+  }
 `
 const Section = styled.div`
   text-align: center;
   width: 33%;
+
+  @media ${device.tablet} {
+    width: 100%;
+  }
 
   h3 {
     margin-bottom: 0;

@@ -4,42 +4,83 @@ import colors from '../utilities/colors'
 import IntoView from '../utilities/IntoView'
 import { device } from '../utilities/breakpoints'
 
-const Contact = () => (
-  <Wrapper id="contact">
-    <InteriorWrapper>
-      <IntoView direction="fade-left">
-        <ContactHeader>Contact</ContactHeader>
-        <ContactDescription>
-          Interested in working together? Let's chat. Leave me a message below.
-        </ContactDescription>
-        <ContactCard>
-          <form
-            name="contact"
-            action="POST"
-            netlify
-            netlify-honeypot="bot-field"
-          >
-            <FormGroupHalf>
-              <Label htmlFor="name">Name</Label>
-              <Input type="text" name="Name" />
-            </FormGroupHalf>
-            <FormGroupHalf>
-              <Label htmlFor="email">Email</Label>
-              <Input type="email" name="email" />
-            </FormGroupHalf>
-            <FormGroupFull>
-              <Label htmlFor="message">Message</Label>
-              <Textarea name="message" />
-            </FormGroupFull>
-            <ButtonGroup>
-              <ContactButton>Send Message</ContactButton>
-            </ButtonGroup>
-          </form>
-        </ContactCard>
-      </IntoView>
-    </InteriorWrapper>
-  </Wrapper>
-)
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
+class Contact extends React.Component {
+  state = {
+    name: '',
+    email: '',
+    message: '',
+  }
+
+  handleSubmit = e => {
+    fetch('/', {
+      method: 'POST',
+      header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...this.state }),
+    })
+      .then(() => alert('Success'))
+      .catch(error => alert(error))
+
+    e.preventDefault()
+  }
+
+  handleChange = e => this.setState({ [e.target.name]: e.target.value })
+
+  render() {
+    const { name, email, message } = this.state
+    return (
+      <Wrapper id="contact">
+        <InteriorWrapper>
+          <IntoView direction="fade-left">
+            <ContactHeader>Contact</ContactHeader>
+            <ContactDescription>
+              Interested in working together? Let's chat. Leave me a message
+              below.
+            </ContactDescription>
+            <ContactCard>
+              <form onSubmit={this.handleSubmit} name="contact">
+                <FormGroupHalf>
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={this.handleChange}
+                  />
+                </FormGroupHalf>
+                <FormGroupHalf>
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={this.handleChange}
+                  />
+                </FormGroupHalf>
+                <FormGroupFull>
+                  <Label htmlFor="message">Message</Label>
+                  <Textarea
+                    name="message"
+                    value={message}
+                    onChange={this.handleChange}
+                  />
+                </FormGroupFull>
+                <ButtonGroup>
+                  <ContactButton type="submit">Send Message</ContactButton>
+                </ButtonGroup>
+              </form>
+            </ContactCard>
+          </IntoView>
+        </InteriorWrapper>
+      </Wrapper>
+    )
+  }
+}
 
 export default Contact
 
@@ -90,11 +131,7 @@ const ContactCard = styled.div`
   background-color: ${colors.catskillWhite};
   border-radius: 3px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
-  padding: 0 2rem;
-
-  @media ${device.mobileM} {
-    padding: 0;
-  }
+  padding: 2rem;
 
   p {
     color: ${colors.dolphin};
