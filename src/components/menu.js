@@ -40,8 +40,8 @@ const MenuButton = styled.a`
     display: inline-block;
     cursor: pointer;
     align-self: center;
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 43px;
     background: none;
     border: none;
     padding: 7px;
@@ -49,7 +49,7 @@ const MenuButton = styled.a`
     transition: all 0.3s ease;
     transform: translate3d(0, 0, 0);
     &.open {
-      background-color: ${colors.gunPowder}
+      background-color: ${colors.gunPowder};
       border-radius: 4px;
       transform: translate3d(0, 0, 0);
     }
@@ -129,9 +129,9 @@ const NavLink = styled.a`
   color: ${colors.gunPowder};
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 22px;
-  font-weight: 600;
-  padding: 1rem;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
   margin: 0 0.3rem;
   transition: all 0.3s;
   border-radius: 3px;

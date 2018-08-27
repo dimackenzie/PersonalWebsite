@@ -2,76 +2,53 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Typist from 'react-typist'
+import IntoView from '../utilities/IntoView'
 import 'babel-polyfill'
 import '../../node_modules/react-typist/dist/Typist.css'
-import Particles from 'react-particles-js'
 import Menu from './menu'
 import colors from '../utilities/colors'
 import { device } from '../utilities/breakpoints'
 import logo from '../assets/images/logo.svg'
 import arrow from '../assets/images/arrow.svg'
+import particles from '../assets/images/particles.png'
 
 const Header = () => (
   <HeaderWrapper>
     <NavBar>
-      <LogoWrap>
-        <Link to="/">
-          <Logo src={logo} alt="Ian Mackenzie" />
-        </Link>
-      </LogoWrap>
+      <IntoView direction="fade-right">
+        <LogoWrap>
+          <Link to="/">
+            <Logo src={logo} alt="Ian Mackenzie" />
+          </Link>
+        </LogoWrap>
+      </IntoView>
       <Menu />
-    </NavBar>
-    <PunchlineWrapper>
-      <Particles
-        params={{
-          particles: {
-            number: {
-              value: 40,
-              density: {
-                enable: true,
-                value_area: 800,
-              },
-            },
-            color: {
-              value: '#2f2f4f',
-            },
-            line_linked: {
-              enable: true,
-              distance: 150,
-              color: '#2f2f4f',
-              opacity: 0.4,
-              width: 1,
-            },
-            interactivity: {
-              events: {
-                onresize: {
-                  enable: true,
-                  density_auto: true,
-                  density_area: 400, // nb_particles = particles.nb * (canvas width *  canvas height / 1000) / density_area
-                },
-              },
-            },
-          },
-        }}
-        canvasClassName="particle-canvas"
-      />
-      <Punchline>
-        <Typist>
-          Hello, I'm Ian. I make <span>BEAUTIFUL, BLAZING-FAST</span> websites.
-        </Typist>
-      </Punchline>
-    </PunchlineWrapper>
-    <Arrow src={arrow} />
+    </NavBar>{' '}
+    <IntoView direction="fade-up">
+      <PunchlineWrapper>
+        <Punchline>
+          <Typist>
+            Hello, I'm Ian. I make <span>FAST and RELIABLE </span>
+            modern websites.
+          </Typist>
+        </Punchline>
+        <Arrow src={arrow} />
+      </PunchlineWrapper>
+    </IntoView>
   </HeaderWrapper>
 )
 
 export default Header
 
 const HeaderWrapper = styled.div`
-  height: 90vh;
+    height: 85vh;
   min-height: 550px;
   position: relative;
   background-color: ${colors.white};
+
+  @media ${device.tablet} {
+height: 100%;
+  }
 `
 
 const NavBar = styled.div`
@@ -94,25 +71,23 @@ const Logo = styled.img`
   margin: 0;
 `
 const PunchlineWrapper = styled.div`
-  display: block;
-  height: calc(100% - 115px);
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   background-color: ${colors.catskillWhite};
+  background-image: url(${particles});
 `
 const Punchline = styled.h2`
   color: ${colors.martinique};
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
   display: block;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   align-items: center;
-  font-size: 50px;
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;
+  font-size: 60px;
   text-align: center;
-  left: 0;
-  right: 0;
 
   @media ${device.tablet} {
     padding: 1rem;

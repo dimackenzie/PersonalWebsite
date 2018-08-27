@@ -5,6 +5,7 @@ import IntoView from '../utilities/IntoView'
 import { device } from '../utilities/breakpoints'
 import PencilRuler from '../assets/images/pencilRuler.svg'
 import Code from '../assets/images/code.svg'
+import Gears from '../assets/images/cogs-solid.svg'
 
 const Services = () => (
   <Wrapper id="services">
@@ -24,18 +25,28 @@ const Services = () => (
             <ServiceHeader>Design</ServiceHeader>
             <ServiceDescription>
               From planning and building a sites layout and structure, to
-              implementing interactivity and funtionality, I design the visual
-              layer.
+              implementing interactivity and funtionality, I work with you to
+              design the visual layer.
             </ServiceDescription>
           </DesignService>
           <DevelopService>
             <CodeIcon src={Code} />
             <ServiceHeader>Develop</ServiceHeader>
             <ServiceDescription>
-              Here's were I bring those ideas and designs to life. Utilizing
-              HTML, CSS, and Javascript, I build fast, interactive websites.
+              Here's where we bring those ideas and designs to life. Utilizing
+              HTML, CSS, and Javascript, I build fast, secure, and interactive
+              websites.
             </ServiceDescription>
           </DevelopService>
+          <MaintainService>
+            <CodeIcon src={Gears} />
+            <ServiceHeader>Maintain</ServiceHeader>
+            <ServiceDescription>
+              Don't have anyone to host your site and keep it updated? We can
+              take care of all the maintenance to ensure your site is safe and
+              secure.
+            </ServiceDescription>
+          </MaintainService>
         </ServicesWrapper>
       </IntoView>
     </InteriorWrapper>
@@ -72,7 +83,7 @@ const ServicesWrapper = styled.div`
   }
 `
 const Service = styled.div`
-  padding: 3rem 4rem;
+  padding: 3rem 3rem;
   margin: 2rem 0;
   width: 50%;
   text-align: center;
@@ -81,17 +92,20 @@ const Service = styled.div`
 
   @media ${device.tablet} {
     width: 100%;
-    padding: 3rem 2rem;
+    padding: 2rem;
+    margin: 0;
   }
 `
 
 const RulerIcon = styled.img`
   color: ${colors.white};
   height: 60px;
+  margin-bottom: 0.2rem;
 `
 const CodeIcon = styled.img`
   color: ${colors.white};
   height: 60px;
+  margin-bottom: 0.2rem;
 `
 const DesignService = Service.extend`
   color: ${colors.white};
@@ -105,6 +119,15 @@ const DesignService = Service.extend`
   }
 `
 const DevelopService = Service.extend`
+  color: ${colors.white};
+  border-right: 1px solid rgba(255, 255, 255, 0.6);
+
+  h3 {
+    margin-top: 0.4rem;
+  }
+`
+
+const MaintainService = Service.extend`
   color: ${colors.white};
 
   h3 {
@@ -142,12 +165,6 @@ const ServiceHeader = styled.h3`
   color: ${colors.white};
   text-transform: uppercase;
 `
-
-// const ServiceSubHeader = styled.h4`
-//   font-size: 22px;
-// `
-
-// const ServiceList = styled.ul``
 
 const ServiceDescription = styled.p`
   color: ${colors.white};

@@ -1,31 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Work+Sans:300,600,700');
+
 
 html {
   overflow-x: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-a {
-  font-family: 'Work Sans', sans-serif;
-}
-
-h2 {
-  font-weight: 700;
-}
-
-h3,
-h4,
-h5 {
-  font-weight: 600;
-}
-p,
-label,
-button {
-  font-family: 'Open Sans', sans-serif;
 }
 
 body {

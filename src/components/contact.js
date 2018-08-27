@@ -10,7 +10,8 @@ const Contact = () => (
       <IntoView direction="fade-left">
         <ContactHeader>Contact</ContactHeader>
         <ContactDescription>
-          Interested in working together? Let's chat. Leave me a message below.
+          Interested in working together or want to view some of my past work?
+          Let's chat. Leave me a message below.
         </ContactDescription>
         <ContactCard>
           <form

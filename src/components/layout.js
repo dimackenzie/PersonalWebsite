@@ -22,8 +22,16 @@ const Layout = ({ children, data }) => (
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            {
+              name: 'description',
+              content:
+                'Ian Mackenzie Development is a full service design and development agency',
+            },
+            {
+              name: 'keywords',
+              content:
+                'Websites, Website Design, Website Development, Ian Mackenzie, Design, Development',
+            },
           ]}
         />
         <Header siteTitle={data.site.siteMetadata.title} />

@@ -49,7 +49,7 @@ const InteriorWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
   margin: 0 auto;
 
   @media ${device.tablet} {
@@ -74,7 +74,7 @@ const Section = styled.div`
 
   p {
     color: ${colors.dolphin};
-    margin-top: 0;
+    margin: 0;
   }
 `
 const Facebook = styled.a`
