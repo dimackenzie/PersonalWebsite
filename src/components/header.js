@@ -41,7 +41,6 @@ const Header = () => (
 export default Header
 
 const HeaderWrapper = styled.div`
-    height: 85vh;
   min-height: 550px;
   position: relative;
   background-color: ${colors.white};
@@ -71,7 +70,7 @@ const Logo = styled.img`
   margin: 0;
 `
 const PunchlineWrapper = styled.div`
-  height: 85vh;
+  height: calc(100vh - 230px);
   display: flex;
   align-items: center;
   justify-content: center;

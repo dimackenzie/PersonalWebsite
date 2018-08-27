@@ -42,7 +42,7 @@ const Services = () => (
             <CodeIcon src={Gears} />
             <ServiceHeader>Maintain</ServiceHeader>
             <ServiceDescription>
-              Don't have anyone to host your site and keep it updated? We can
+              Don't have anyone to host your site and keep it updated? I can
               take care of all the maintenance to ensure your site is safe and
               secure.
             </ServiceDescription>

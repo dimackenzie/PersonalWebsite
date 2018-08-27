@@ -49,7 +49,7 @@ const Contact = () => (
 export default Contact
 
 const Wrapper = styled.div`
-  padding: 10rem 1rem;
+  padding: 12rem 1rem;
   margin: 0 auto;
   background-color: ${colors.white};
 
