@@ -16,6 +16,7 @@ const Footer = () => (
             href="https://www.facebook.com/ian.mackenzie.06"
             target="_blank"
             title="Facebook"
+            rel="noopener"
           >
             Facebook
           </Facebook>
@@ -25,6 +26,7 @@ const Footer = () => (
             href="https://www.linkedin.com/in/donald-mackenzie-b6737484/"
             target="_blank"
             title="LinkedIn"
+            rel="noopener"
           >
             LinkedIn
           </LinkedIn>

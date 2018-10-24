@@ -21,7 +21,7 @@ const Services = () => (
         </ServicesDescription>
         <ServicesWrapper>
           <DesignService>
-            <RulerIcon src={PencilRuler} />
+            <RulerIcon src={PencilRuler} alt="Design" />
             <ServiceHeader>Design</ServiceHeader>
             <ServiceDescription>
               From planning and building a sites layout and structure, to
@@ -30,7 +30,7 @@ const Services = () => (
             </ServiceDescription>
           </DesignService>
           <DevelopService>
-            <CodeIcon src={Code} />
+            <CodeIcon src={Code} alt="Develop" />
             <ServiceHeader>Develop</ServiceHeader>
             <ServiceDescription>
               Here's where we bring those ideas and designs to life. Utilizing
@@ -39,7 +39,7 @@ const Services = () => (
             </ServiceDescription>
           </DevelopService>
           <MaintainService>
-            <CodeIcon src={Gears} />
+            <CodeIcon src={Gears} alt="Maintain" />
             <ServiceHeader>Maintain</ServiceHeader>
             <ServiceDescription>
               Don't have anyone to host your site and keep it updated? I can

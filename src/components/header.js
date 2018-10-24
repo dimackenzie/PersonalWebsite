@@ -32,7 +32,7 @@ const Header = () => (
             modern websites.
           </Typist>
         </Punchline>
-        <Arrow src={arrow} />
+        <Arrow src={arrow} alt="Scroll Down" />
       </PunchlineWrapper>
     </IntoView>
   </HeaderWrapper>
@@ -46,7 +46,7 @@ const HeaderWrapper = styled.div`
   background-color: ${colors.white};
 
   @media ${device.tablet} {
-height: 100%;
+    height: 100%;
   }
 `
 
