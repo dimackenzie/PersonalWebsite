@@ -26,15 +26,15 @@ const Contact = () => (
             </label>
             <FormGroupHalf>
               <Label htmlFor="name">Name</Label>
-              <Input type="text" name="name" required />
+              <Input type="text" name="name" id="name" required />
             </FormGroupHalf>
             <FormGroupHalf>
               <Label htmlFor="email">Email</Label>
-              <Input type="email" name="email" required />
+              <Input type="email" name="email" id="email" required />
             </FormGroupHalf>
             <FormGroupFull>
               <Label htmlFor="message">Message</Label>
-              <Textarea name="message" />
+              <Textarea name="message" id="message" />
             </FormGroupFull>
             <ButtonGroup>
               <ContactButton type="submit">Send Message</ContactButton>
