@@ -10,7 +10,11 @@ import purpPinstripe from '../assets/images/purpPinstripe.svg'
 import useColorTransition from '../hooks/useColorTransition'
 
 const Services = () => {
-  const [container, rgb] = useColorTransition([68, 46, 233], [141, 128, 238])
+  const [container, rgb] = useColorTransition(
+    [68, 46, 233],
+    [141, 128, 238],
+    0.025
+  )
 
   return (
     <Wrapper id="services">

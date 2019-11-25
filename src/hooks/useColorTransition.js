@@ -10,12 +10,12 @@ const transition = (start, end, step) => {
   return result
 }
 
-const useColorTransition = (startingColor, endingColor) => {
+const useColorTransition = (startingColor, endingColor, transitionInterval) => {
   const position = useRef(0)
   const container = useRef()
   const isIntersecting = useObserver(container)
   const [rgb, setRgb] = useState(startingColor)
-  const trasitionStepRef = useRef(0.05)
+  const transitionIntervalRef = useRef(transitionInterval)
 
   const handleColorTransition = useCallback(
     e => {
@@ -24,12 +24,12 @@ const useColorTransition = (startingColor, endingColor) => {
         let transitionColor = transition(
           startingColor,
           endingColor,
-          trasitionStepRef.current
+          transitionIntervalRef.current
         )
-        trasitionStepRef.current =
-          trasitionStepRef.current > 0
-            ? trasitionStepRef.current - 0.05
-            : trasitionStepRef.current
+        transitionIntervalRef.current =
+          transitionIntervalRef.current > 0
+            ? transitionIntervalRef.current - transitionInterval
+            : transitionIntervalRef.current
         setRgb(transitionColor)
       }
       // Scrolling down
@@ -37,18 +37,18 @@ const useColorTransition = (startingColor, endingColor) => {
         let transitionColor = transition(
           startingColor,
           endingColor,
-          trasitionStepRef.current
+          transitionIntervalRef.current
         )
-        trasitionStepRef.current =
-          trasitionStepRef.current < 1
-            ? trasitionStepRef.current + 0.05
-            : trasitionStepRef.current
+        transitionIntervalRef.current =
+          transitionIntervalRef.current < 1
+            ? transitionIntervalRef.current + transitionInterval
+            : transitionIntervalRef.current
         setRgb(transitionColor)
       }
 
       position.current = window.scrollY
     },
-    [startingColor, endingColor]
+    [startingColor, endingColor, transitionInterval]
   )
 
   useLayoutEffect(() => {
