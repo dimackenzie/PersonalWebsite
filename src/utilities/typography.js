@@ -19,7 +19,7 @@ const typography = new Typography({
     },
     {
       name: bodyFontFamily,
-      styles: ['400', '300'],
+      styles: ['700', '400', '300'],
     },
   ],
 })

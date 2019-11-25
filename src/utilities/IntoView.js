@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AOS from 'aos'
+import styled from 'styled-components'
 import 'aos/dist/aos.css'
 
 export default class IntoView extends Component {
@@ -14,9 +15,15 @@ export default class IntoView extends Component {
   render() {
     const { children, direction } = this.props
     return (
-      <div data-aos={direction} data-aos-once="true">
+      <IntoViewWrapper data-aos={direction} data-aos-once="true">
         {children}
-      </div>
+      </IntoViewWrapper>
     )
   }
 }
+
+const IntoViewWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`

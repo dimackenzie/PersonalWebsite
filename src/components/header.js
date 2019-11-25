@@ -6,11 +6,11 @@ import IntoView from '../utilities/IntoView'
 import 'babel-polyfill'
 import '../../node_modules/react-typist/dist/Typist.css'
 import Menu from './menu'
-import colors from '../utilities/colors'
+import { colors } from '../utilities/colors'
 import { device } from '../utilities/breakpoints'
-import logo from '../assets/images/logo.svg'
+import ian from '../assets/images/ian.svg'
+import pinstripe from '../assets/images/pinstripe.svg'
 import arrow from '../assets/images/arrow.svg'
-import particles from '../assets/images/particles.png'
 
 const Header = () => (
   <HeaderWrapper>
@@ -18,20 +18,21 @@ const Header = () => (
       <IntoView direction="fade-right">
         <LogoWrap>
           <Link to="/">
-            <Logo src={logo} alt="Ian Mackenzie" />
+            <Logo src={ian} alt="Ian Mackenzie" />
           </Link>
         </LogoWrap>
       </IntoView>
       <Menu />
-    </NavBar>{' '}
+    </NavBar>
     <IntoView direction="fade-up">
       <PunchlineWrapper>
-        <Punchline>
-          <Typist>
-            Hello, I'm Ian. I make <span>FAST and RELIABLE </span>
-            modern websites.
-          </Typist>
-        </Punchline>
+        <PunchlineBackground>
+          <Punchline>
+            <Typist>
+              Hello, I'm Ian. I make FAST and RELIABLE modern websites.
+            </Typist>
+          </Punchline>
+        </PunchlineBackground>
         <Arrow src={arrow} alt="Scroll Down" />
       </PunchlineWrapper>
     </IntoView>
@@ -43,7 +44,10 @@ export default Header
 const HeaderWrapper = styled.div`
   min-height: 550px;
   position: relative;
-  background-color: ${colors.white};
+  background-color: ${colors.gray.dark};
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
 
   @media ${device.tablet} {
     height: 100%;
@@ -70,20 +74,29 @@ const Logo = styled.img`
   margin: 0;
 `
 const PunchlineWrapper = styled.div`
-  height: calc(100vh - 230px);
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: ${colors.catskillWhite};
-  background-image: url(${particles});
 `
+
+const PunchlineBackground = styled.div`
+  background-image: url(${pinstripe});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 5rem;
+  padding: 1rem;
+  min-height: 230px;
+`
+
 const Punchline = styled.h2`
-  color: ${colors.martinique};
+  color: ${colors.primary.white};
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
   display: block;
   max-width: 700px;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
   align-items: center;
   font-size: 60px;
   text-align: center;

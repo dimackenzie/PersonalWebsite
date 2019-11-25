@@ -1,64 +1,75 @@
 import React from 'react'
 import styled from 'styled-components'
-import colors from '../utilities/colors'
+import { colors } from '../utilities/colors'
 import IntoView from '../utilities/IntoView'
 import { device } from '../utilities/breakpoints'
 import PencilRuler from '../assets/images/pencilRuler.svg'
 import Code from '../assets/images/code.svg'
 import Gears from '../assets/images/cogs-solid.svg'
+import purpPinstripe from '../assets/images/purpPinstripe.svg'
+import useColorTransition from '../hooks/useColorTransition'
 
-const Services = () => (
-  <Wrapper id="services">
-    <InteriorWrapper>
-      <IntoView direction="zoom-in">
-        <ServicesHeader>Services</ServicesHeader>
-        <ServicesDescription>
-          I design and build full-stack web sites and web apps. Have a project
-          or idea you'd like to discuss?{' '}
-          <LetsTalk href="#contact" title="contact">
-            Let's talk.
-          </LetsTalk>
-        </ServicesDescription>
-        <ServicesWrapper>
-          <DesignService>
-            <RulerIcon src={PencilRuler} alt="Design" />
-            <ServiceHeader>Design</ServiceHeader>
-            <ServiceDescription>
-              From planning and building a sites layout and structure, to
-              implementing interactivity and funtionality, I work with you to
-              design the visual layer.
-            </ServiceDescription>
-          </DesignService>
-          <DevelopService>
-            <CodeIcon src={Code} alt="Develop" />
-            <ServiceHeader>Develop</ServiceHeader>
-            <ServiceDescription>
-              Here's where we bring those ideas and designs to life. Utilizing
-              HTML, CSS, and Javascript, I build fast, secure, and interactive
-              websites.
-            </ServiceDescription>
-          </DevelopService>
-          <MaintainService>
-            <CodeIcon src={Gears} alt="Maintain" />
-            <ServiceHeader>Maintain</ServiceHeader>
-            <ServiceDescription>
-              Don't have anyone to host your site and keep it updated? I can
-              take care of all the maintenance to ensure your site is safe and
-              secure.
-            </ServiceDescription>
-          </MaintainService>
-        </ServicesWrapper>
-      </IntoView>
-    </InteriorWrapper>
-  </Wrapper>
-)
+const Services = () => {
+  const [container, rgb] = useColorTransition([68, 46, 233], [141, 128, 238])
+
+  return (
+    <Wrapper id="services">
+      <InteriorWrapper>
+        <IntoView direction="zoom-in">
+          <ServicesHeader>Services</ServicesHeader>
+          <ServicesDescription>
+            I design and build full-stack web sites and web apps. Have a project
+            or idea you'd like to discuss?{' '}
+            <LetsTalk href="#contact" title="contact">
+              Let's talk.
+            </LetsTalk>
+          </ServicesDescription>
+          <ServicesWrapper
+            innerRef={container}
+            style={{
+              backgroundColor: rgb,
+            }}
+          >
+            <DesignService>
+              <RulerIcon src={PencilRuler} alt="Design" />
+              <ServiceHeader>Design</ServiceHeader>
+              <ServiceDescription>
+                From planning and building a sites layout and structure, to
+                implementing interactivity and funtionality, I work with you to
+                design the visual layer.
+              </ServiceDescription>
+            </DesignService>
+            <DevelopService>
+              <CodeIcon src={Code} alt="Develop" />
+              <ServiceHeader>Develop</ServiceHeader>
+              <ServiceDescription>
+                Here's where we bring those ideas and designs to life. Utilizing
+                HTML, CSS, and Javascript, I build fast, secure, and interactive
+                websites.
+              </ServiceDescription>
+            </DevelopService>
+            <MaintainService>
+              <CodeIcon src={Gears} alt="Maintain" />
+              <ServiceHeader>Maintain</ServiceHeader>
+              <ServiceDescription>
+                Don't have anyone to host your site and keep it updated? I can
+                take care of all the maintenance to ensure your site is safe and
+                secure.
+              </ServiceDescription>
+            </MaintainService>
+          </ServicesWrapper>
+        </IntoView>
+      </InteriorWrapper>
+    </Wrapper>
+  )
+}
 
 export default Services
 
 const Wrapper = styled.div`
   margin: 0 auto;
   padding: 15rem 1rem;
-  background-color: ${colors.white};
+  background-color: ${colors.primary.white};
 
   @media ${device.tablet} {
     padding: 5rem 1rem;
@@ -75,8 +86,9 @@ const ServicesWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-  background-color: ${colors.dodgerBlue};
-  border-radius: 3px;
+  border-radius: 15px;
+  transition: 0.1s all;
+  will-change: background;
 
   @media ${device.tablet} {
     flex-direction: column;
@@ -98,17 +110,17 @@ const Service = styled.div`
 `
 
 const RulerIcon = styled.img`
-  color: ${colors.white};
+  color: ${colors.primary.white};
   height: 60px;
   margin-bottom: 0.2rem;
 `
 const CodeIcon = styled.img`
-  color: ${colors.white};
+  color: ${colors.primary.white};
   height: 60px;
   margin-bottom: 0.2rem;
 `
 const DesignService = Service.extend`
-  color: ${colors.white};
+  color: ${colors.primary.white};
   border-right: 1px solid rgba(255, 255, 255, 0.6);
 
   @media ${device.tablet} {
@@ -119,7 +131,7 @@ const DesignService = Service.extend`
   }
 `
 const DevelopService = Service.extend`
-  color: ${colors.white};
+  color: ${colors.primary.white};
   border-right: 1px solid rgba(255, 255, 255, 0.6);
 
   h3 {
@@ -128,7 +140,7 @@ const DevelopService = Service.extend`
 `
 
 const MaintainService = Service.extend`
-  color: ${colors.white};
+  color: ${colors.primary.white};
 
   h3 {
     margin-top: 0.4rem;
@@ -137,24 +149,26 @@ const MaintainService = Service.extend`
 
 const ServicesHeader = styled.h2`
   margin-bottom: 1.5rem;
-  color: ${colors.martinique};
+  color: ${colors.gray.dark};
   position: relative;
   text-transform: uppercase;
   text-align: center;
   font-size: 50px;
 
-  &:before {
+  &:after {
     content: '';
-    width: 3rem;
-    background-color: ${colors.dodgerBlue};
-    height: 6px;
-    top: -8px;
-    border-radius: 1px;
     position: absolute;
+    top: 0;
+    right: -50%;
+    left: 0;
+    bottom: 0;
+    background-image: url(${purpPinstripe});
+    background-repeat: no-repeat;
+    background-position: center;
   }
 `
 const ServicesDescription = styled.p`
-  color: ${colors.dolphin};
+  color: ${colors.gray.light};
   text-align: center;
   max-width: 700px;
   margin: 0 auto 3rem;
@@ -172,5 +186,5 @@ const ServiceDescription = styled.p`
 `
 
 const LetsTalk = styled.a`
-  color: ${colors.dodgerBlue};
+  color: ${colors.primary.darkPurple};
 `

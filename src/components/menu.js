@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react'
 import styled from 'styled-components'
-import colors from '../utilities/colors'
+import { colors } from '../utilities/colors'
 import { device } from '../utilities/breakpoints'
 
 export default class Menu extends Component {
@@ -61,7 +61,7 @@ const MenuBurger = styled.span`
   width: 30px;
   height: 4px;
   margin: 8px auto;
-  background-color: ${colors.gunPowder};
+  background-color: ${colors.primary.white};
   border-radius: 1px;
   transition: all 0.3s ease;
 
@@ -75,7 +75,7 @@ const MenuBurger = styled.span`
     width: 30px;
     height: 4px;
     border-radius: 1px;
-    background-color: ${colors.gunPowder};
+    background-color: ${colors.primary.white};
     position: absolute;
     transition: all 0.3s ease;
   }
@@ -88,13 +88,13 @@ const MenuBurger = styled.span`
     top: 15px;
   }
   &.open::before {
-    background-color: ${colors.white};
+    background-color: ${colors.primary.white};
     top: 20px;
     margin: 0;
     transform: rotate(45deg);
   }
   &.open::after {
-    background-color: ${colors.white};
+    background-color: ${colors.primary.white};
     top: 20px;
     margin: 0;
     transform: rotate(-45deg);
@@ -117,7 +117,7 @@ const Nav = styled.nav`
     transform: translate3d(0, -35px, 0);
     transition: all 0.3s ease;
     &.open {
-      background-color: ${colors.gunPowder};
+      background-color: ${colors.primary.white};
       border-radius: 4px;
       opacity: 1;
       transform: translate3d(0, 0, 0);
@@ -126,12 +126,12 @@ const Nav = styled.nav`
 `
 
 const NavLink = styled.a`
-  color: ${colors.gunPowder};
+  color: ${colors.primary.white};
   text-decoration: none;
   text-transform: uppercase;
   font-size: 20px;
   font-weight: 700;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   margin: 0 0.3rem;
   transition: all 0.3s;
   border-radius: 3px;

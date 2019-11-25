@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import colors from '../utilities/colors'
+import { colors } from '../utilities/colors'
 import IntoView from '../utilities/IntoView'
 import { device } from '../utilities/breakpoints'
+import purpPinstripe from '../assets/images/purpPinstripe.svg'
 
 const Contact = () => (
   <Wrapper id="contact">
@@ -37,7 +38,7 @@ const Contact = () => (
               <Textarea name="message" id="message" />
             </FormGroupFull>
             <ButtonGroup>
-              <ContactButton type="submit">Send Message</ContactButton>
+              <ContactButton type="submit">Send</ContactButton>
             </ButtonGroup>
           </form>
         </ContactCard>
@@ -51,7 +52,7 @@ export default Contact
 const Wrapper = styled.div`
   padding: 12rem 1rem;
   margin: 0 auto;
-  background-color: ${colors.white};
+  background-color: ${colors.primary.white};
 
   @media ${device.tablet} {
     padding: 5rem 1rem;
@@ -65,24 +66,26 @@ const InteriorWrapper = styled.div`
 
 const ContactHeader = styled.h2`
   margin-bottom: 1.5rem;
-  color: ${colors.martinique};
+  color: ${colors.gray.dark};
   position: relative;
   text-transform: uppercase;
   text-align: center;
   font-size: 50px;
 
-  &:before {
+  &:after {
     content: '';
-    width: 3rem;
-    background-color: ${colors.dodgerBlue};
-    height: 6px;
-    top: -8px;
-    border-radius: 1px;
     position: absolute;
+    top: 0;
+    right: -50%;
+    left: 0;
+    bottom: 0;
+    background-image: url(${purpPinstripe});
+    background-repeat: no-repeat;
+    background-position: center;
   }
 `
 const ContactDescription = styled.p`
-  color: ${colors.dolphin};
+  color: ${colors.gray.light};
   text-align: center;
   max-width: 700px;
   margin: 0 auto 3rem;
@@ -92,9 +95,6 @@ const ContactCard = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: ${colors.catskillWhite};
-  border-radius: 3px;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
   padding: 2rem;
 
   @media ${device.tablet} {
@@ -102,7 +102,7 @@ const ContactCard = styled.div`
   }
 
   p {
-    color: ${colors.dolphin};
+    color: ${colors.gray.light};
     display: block;
     padding-top: 1rem;
     padding-left: 2rem;
@@ -137,39 +137,38 @@ const FormGroupFull = styled.div`
 `
 
 const Label = styled.label`
-  color: ${colors.dolphin};
+  color: ${colors.gray.dark};
+  font-weight: 700;
   display: block;
   margin-bottom: 0.3rem;
 `
 
 const Input = styled.input`
-  color: ${colors.gunPowder};
-  border: none;
+  color: ${colors.gray.light};
+  border: 4px solid ${colors.primary.green};
   padding: 1rem;
   font-size: 20px;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 3px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 
   &:active:before,
   &:focus:before {
     content: '';
     background-color: ${colors.dodgerBlue};
-    width: 5px:
-    height: 100%:
+    width: 5px;
+    height: 100%;
     position: absolute;
   }
 `
 const Textarea = styled.textarea`
-  color: ${colors.dolphin};
-  border: none;
+  color: ${colors.gray.light};
+  border: 4px solid ${colors.primary.green};
   padding: 1rem;
   font-size: 20px;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 3px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 `
 
 const ButtonGroup = styled.div`
@@ -178,24 +177,22 @@ const ButtonGroup = styled.div`
 `
 
 const ContactButton = styled.button`
-  color: ${colors.white};
-  background-color: ${colors.dodgerBlue};
+  color: ${colors.gray.dark};
+  background-color: ${colors.primary.green};
   border: none;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
   text-transform: uppercase;
-  font-size: 16px;
-  border-radius: 3px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 10px;
   transition: 0.3s all;
 
   &:hover {
-    background-color: ${colors.dodgerBlue};
-    box-shadow: none;
-    border-bottom: none;
+    background-color: ${colors.primary.green};
   }
 
   &:active {
-    background-color: ${colors.dodgerBlue};
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
     border-bottom: none;
   }

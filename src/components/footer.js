@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import colors from '../utilities/colors'
+import { colors } from '../utilities/colors'
 import { device } from '../utilities/breakpoints'
 
 const Footer = () => (
@@ -42,8 +42,10 @@ const Footer = () => (
 export default Footer
 
 const Wrapper = styled.div`
-  background-color: ${colors.woodsmoke};
-  color: ${colors.white};
+  background-color: ${colors.gray.dark};
+  color: ${colors.primary.white};
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 `
 
 const InteriorWrapper = styled.div`
@@ -75,12 +77,12 @@ const Section = styled.div`
   }
 
   p {
-    color: ${colors.dolphin};
+    color: ${colors.gray.light};
     margin: 0;
   }
 `
 const Facebook = styled.a`
-  color: ${colors.white};
+  color: ${colors.primary.white};
   text-decoration: none;
   display: block;
   transition: 0.3s all ease;
@@ -90,7 +92,7 @@ const Facebook = styled.a`
 `
 
 const LinkedIn = styled.a`
-  color: ${colors.white};
+  color: ${colors.primary.white};
   text-decoration: none;
   display: block;
   transition: 0.3s all ease;
