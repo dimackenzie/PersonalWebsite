@@ -82,6 +82,8 @@ const PunchlineWrapper = styled.div`
 `
 
 const PunchlineBackground = styled.div`
+  display: flex;
+  align-items: center;
   background-image: url(${pinstripe});
   background-repeat: no-repeat;
   background-size: cover;
