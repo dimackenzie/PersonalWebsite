@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState } from 'react'
+import { useRef, useLayoutEffect, useCallback, useState } from 'react'
 import useObserver from './useObserver'
 import throttle from '../utilities/throttle'
 
@@ -17,6 +17,40 @@ const useColorTransition = (startingColor, endingColor) => {
   const [rgb, setRgb] = useState(startingColor)
   const trasitionStepRef = useRef(0.05)
 
+  const handleColorTransition = useCallback(
+    e => {
+      // Scrolling up
+      if (position.current > e.currentTarget.scrollY) {
+        let transitionColor = transition(
+          startingColor,
+          endingColor,
+          trasitionStepRef.current
+        )
+        trasitionStepRef.current =
+          trasitionStepRef.current > 0
+            ? trasitionStepRef.current - 0.05
+            : trasitionStepRef.current
+        setRgb(transitionColor)
+      }
+      // Scrolling down
+      else if (position.current <= e.currentTarget.scrollY) {
+        let transitionColor = transition(
+          startingColor,
+          endingColor,
+          trasitionStepRef.current
+        )
+        trasitionStepRef.current =
+          trasitionStepRef.current < 1
+            ? trasitionStepRef.current + 0.05
+            : trasitionStepRef.current
+        setRgb(transitionColor)
+      }
+
+      position.current = window.scrollY
+    },
+    [startingColor, endingColor]
+  )
+
   useLayoutEffect(() => {
     const throttledHandleColorTransition = throttle(handleColorTransition, 200)
     if (isIntersecting)
@@ -24,38 +58,7 @@ const useColorTransition = (startingColor, endingColor) => {
 
     return () =>
       window.removeEventListener('scroll', throttledHandleColorTransition)
-  }, [isIntersecting])
-
-  const handleColorTransition = e => {
-    // Scrolling up
-    if (position.current > e.currentTarget.scrollY) {
-      let transitionColor = transition(
-        startingColor,
-        endingColor,
-        trasitionStepRef.current
-      )
-      trasitionStepRef.current =
-        trasitionStepRef.current > 0
-          ? trasitionStepRef.current - 0.05
-          : trasitionStepRef.current
-      setRgb(transitionColor)
-    }
-    // Scrolling down
-    else if (position.current <= e.currentTarget.scrollY) {
-      let transitionColor = transition(
-        startingColor,
-        endingColor,
-        trasitionStepRef.current
-      )
-      trasitionStepRef.current =
-        trasitionStepRef.current < 1
-          ? trasitionStepRef.current + 0.05
-          : trasitionStepRef.current
-      setRgb(transitionColor)
-    }
-
-    position.current = window.scrollY
-  }
+  }, [isIntersecting, handleColorTransition])
 
   return [container, `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`]
 }

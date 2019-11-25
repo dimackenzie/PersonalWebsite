@@ -4,16 +4,17 @@ const useObserver = (ref, options = { rootMargin: '0px', threshold: [0] }) => {
   const [isIntersecting, setIntersecting] = useState(false)
 
   useEffect(() => {
+    const persistentRef = ref.current
     const observer = new IntersectionObserver(([entry]) => {
       setIntersecting(entry.isIntersecting)
     }, options)
 
-    if (ref.current) {
-      observer.observe(ref.current)
+    if (persistentRef) {
+      observer.observe(persistentRef)
     }
 
     return () => {
-      observer.unobserve(ref.current)
+      observer.unobserve(persistentRef)
     }
   })
 
