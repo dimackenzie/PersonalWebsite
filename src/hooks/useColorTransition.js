@@ -52,7 +52,7 @@ const useColorTransition = (startingColor, endingColor) => {
   )
 
   useLayoutEffect(() => {
-    const throttledHandleColorTransition = throttle(handleColorTransition, 200)
+    const throttledHandleColorTransition = throttle(handleColorTransition, 500)
     if (isIntersecting)
       window.addEventListener('scroll', throttledHandleColorTransition)
 

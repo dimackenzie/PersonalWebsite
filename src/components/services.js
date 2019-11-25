@@ -154,6 +154,7 @@ const ServicesHeader = styled.h2`
   text-transform: uppercase;
   text-align: center;
   font-size: 50px;
+  z-index: 100;
 
   &:after {
     content: '';
@@ -165,6 +166,7 @@ const ServicesHeader = styled.h2`
     background-image: url(${purpPinstripe});
     background-repeat: no-repeat;
     background-position: center;
+    z-index: -1;
   }
 `
 const ServicesDescription = styled.p`

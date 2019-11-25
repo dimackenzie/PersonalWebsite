@@ -64,6 +64,7 @@ const AboutHeader = styled.h2`
   text-transform: uppercase;
   text-align: center;
   font-size: 50px;
+  z-index: 100;
 
   &:after {
     content: '';
@@ -75,6 +76,7 @@ const AboutHeader = styled.h2`
     background-image: url(${greenPinstripe});
     background-repeat: no-repeat;
     background-position: center;
+    z-index: -1;
   }
 `
 const BioCard = styled.div`

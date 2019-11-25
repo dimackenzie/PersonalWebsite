@@ -117,7 +117,7 @@ const Nav = styled.nav`
     transform: translate3d(0, -35px, 0);
     transition: all 0.3s ease;
     &.open {
-      background-color: ${colors.primary.white};
+      background-color: ${colors.gray.light};
       border-radius: 4px;
       opacity: 1;
       transform: translate3d(0, 0, 0);
