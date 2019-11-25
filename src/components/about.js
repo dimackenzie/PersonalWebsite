@@ -50,6 +50,7 @@ const InteriorWrapper = styled.div`
 
 const AboutWrapper = styled.div`
   display: flex;
+  align-items: center;
 
   @media ${device.tablet} {
     flex-direction: column;
