@@ -7,15 +7,8 @@ import PencilRuler from '../assets/images/pencilRuler.svg'
 import Code from '../assets/images/code.svg'
 import Gears from '../assets/images/cogs-solid.svg'
 import purpPinstripe from '../assets/images/purpPinstripe.svg'
-import useColorTransition from '../hooks/useColorTransition'
 
 const Services = () => {
-  const [container, rgb] = useColorTransition(
-    [68, 46, 233],
-    [141, 128, 238],
-    0.025
-  )
-
   return (
     <Wrapper id="services">
       <InteriorWrapper>
@@ -28,12 +21,7 @@ const Services = () => {
               Let's talk.
             </LetsTalk>
           </ServicesDescription>
-          <ServicesWrapper
-            innerRef={container}
-            style={{
-              backgroundColor: rgb,
-            }}
-          >
+          <ServicesWrapper>
             <DesignService>
               <RulerIcon src={PencilRuler} alt="Design" />
               <ServiceHeader>Design</ServiceHeader>
@@ -92,7 +80,25 @@ const ServicesWrapper = styled.div`
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   transition: 0.1s all;
-  will-change: background;
+  background: linear-gradient(
+    245deg,
+    ${colors.primary.darkPurple},
+    ${colors.primary.lightPurple}
+  );
+  background-size: 600% 600%;
+  animation: GradientTransition 6s ease infinite;
+
+  @keyframes GradientTransition {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 
   @media ${device.tablet} {
     flex-direction: column;
